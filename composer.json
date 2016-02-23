@@ -12,7 +12,7 @@
         "role": "Developer"
     }],
     "require": {
-        "composer-plugin-api": "1.0.0",
+        "composer-plugin-api": "~1",
         "gnugat/wizard-bundle": "~1"
     },
     "require-dev": {
