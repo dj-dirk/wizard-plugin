@@ -16,7 +16,7 @@
     }],
     "require": {
         "composer-plugin-api": "~1",
-        "gnugat/wizard-bundle": "~1"
+        "fizz/wizard-bundle": "~1"
     },
     "require-dev": {
         "composer/composer": "~1.0@alpha"
