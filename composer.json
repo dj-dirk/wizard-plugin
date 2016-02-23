@@ -1,15 +1,18 @@
 {
-    "name": "gnugat/wizard-plugin",
+    "name": "fizz/wizard-plugin",
     "type": "composer-plugin",
     "description": "Automatically registers bundles in a Symfony2 application when running 'composer require'",
     "keywords": ["wizard", "install", "bundle", "symfony"],
-    "homepage": "https://github.com/gnugat/wizard-plugin",
+    "homepage": "https://github.com/dj-dirk/wizard-plugin",
     "license": "MIT",
     "authors": [{
         "name": "Loïc Chardonnet",
         "email": "loic.chardonnet@gmail.com",
         "homepage": "http://gnugat.github.io",
         "role": "Developer"
+    },{
+        "name":"Dirk Jansen",
+        "email": "dirk@fizz.nl"
     }],
     "require": {
         "composer-plugin-api": "~1",
