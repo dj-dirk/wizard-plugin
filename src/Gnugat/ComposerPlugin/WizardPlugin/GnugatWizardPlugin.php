@@ -18,6 +18,7 @@ use Composer\Package\PackageInterface;
 use Composer\Plugin\PluginInterface;
 use Composer\Script\Event;
 use Composer\Script\ScriptEvents;
+use Composer\Installer\PackageEvent;
 
 use Gnugat\ComposerPlugin\WizardPlugin\DependencyInjection\Factory;
 
@@ -51,9 +52,9 @@ class GnugatWizardPlugin implements PluginInterface, EventSubscriberInterface
     /**
      * On Composer's "post-package-install" event, register the package.
      *
-     * @param Event $event
+     * @param PackageEvent $event
      */
-    public function registerPackage(Event $event)
+    public function registerPackage(PackageEvent $event)
     {
         $output = $event->getIo();
         $installedPackage = $event->getOperation()->getPackage();
