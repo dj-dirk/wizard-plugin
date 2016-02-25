@@ -16,7 +16,7 @@
     }],
     "require": {
         "composer-plugin-api": "~1",
-        "fizz/wizard-bundle": "~1"
+        "fizz/wizard-bundle": "dev-master"
     },
     "require-dev": {
         "composer/composer": "~1.0@alpha"

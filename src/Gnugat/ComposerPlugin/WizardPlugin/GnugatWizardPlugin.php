@@ -44,28 +44,53 @@ class GnugatWizardPlugin implements PluginInterface, EventSubscriberInterface
     {
         return array(
             ScriptEvents::POST_PACKAGE_INSTALL => array(
-                array('registerPackage', 0)
+                array('installPackage', 0)
+            ),
+            ScriptEvents::POST_PACKAGE_UPDATE => array(
+                array('updatePackage', 0)
             ),
         );
     }
 
     /**
-     * On Composer's "post-package-install" event, register the package.
+ * On Composer's "post-package-install" event, register the package.
+ *
+ * @param PackageEvent $event
+ */
+    public function installPackage(PackageEvent $event)
+    {
+        $package = $event->getOperation()->getPackage();
+        $this->registerPackage($event,$package);
+    }
+
+    /**
+     * On Composer's "post-package-update" event, register the package.
      *
      * @param PackageEvent $event
      */
-    public function registerPackage(PackageEvent $event)
+    public function updatePackage(PackageEvent $event)
+    {
+        $package = $event->getOperation()->getTargetPackage();
+        $this->registerPackage($event,$package);
+    }
+
+    /**
+     * Register package after update or install
+     *
+     * @param PackageEvent $event
+     * @param PackageInterface $package
+     */
+    public function registerPackage(PackageEvent $event, PackageInterface $package)
     {
         $output = $event->getIo();
-        $installedPackage = $event->getOperation()->getPackage();
 
-        if (!$this->supports($installedPackage)) {
+        if (!$this->supports($package)) {
             return;
         }
         try {
-            $this->enablePackage($installedPackage);
+            $this->enablePackage($package);
         } catch (\RuntimeException $e) {
-            $output->write(sprintf('Bundle "%s" is already registered', $installedPackage));
+            $output->write(sprintf('Bundle "%s" is already registered', $package));
         }
     }
 
